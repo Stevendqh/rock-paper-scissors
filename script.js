@@ -8,22 +8,32 @@ function getComputerChoice() {
             return "paper";
         case 2:
             return "scissors"
-        }
     }
+}
 
 function getPlayerChoice() {
     let playerSelection = prompt("Enter your choice: Rock, Paper, or Scissors");
     return playerSelection;
 }
-function playRound(playerSelection,computerSelection) {
 
-    
+function playRound(playerSelection, computerSelection) {
+
+
     playerSelection = playerSelection.toLowerCase();
 
     const outcomes = {
-        rock: { beats: "scissors", losesTo: "paper" },
-        paper: { beats: "rock", losesTo: "scissors" },
-        scissors: { beats: "paper", losesTo: "rock" },
+        rock: {
+            beats: "scissors",
+            losesTo: "paper"
+        },
+        paper: {
+            beats: "rock",
+            losesTo: "scissors"
+        },
+        scissors: {
+            beats: "paper",
+            losesTo: "rock"
+        },
     };
 
     console.log("You chose: " + playerSelection);
@@ -43,9 +53,9 @@ function playRound(playerSelection,computerSelection) {
 
 }
 
-function game(){
+function game() {
     let playerWins = 0;
-    let computerWins  = 0;
+    let computerWins = 0;
     let tieGame = 0
 
     for (let i = 0; i < 5; i++) {
@@ -53,21 +63,21 @@ function game(){
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
 
-        const roundResult = playRound(playerSelection,computerSelection);
+        const roundResult = playRound(playerSelection, computerSelection);
 
-         if (roundResult.includes("Win")) {
+        if (roundResult.includes("Win")) {
             playerWins++;
-          } else if (roundResult.includes("lose")) {
+        } else if (roundResult.includes("lose")) {
             computerWins++;
-          } else if (roundResult.includes("tie")) {
+        } else if (roundResult.includes("tie")) {
             tieGame++;
-          }
+        }
         console.log(roundResult);
-    }  
+    }
 
-    console.log ("Player Wins: " + playerWins);
-    console.log ("Computer Wins: " + computerWins);
-    console.log ("Ties: " + tieGame);
+    console.log("Player Wins: " + playerWins);
+    console.log("Computer Wins: " + computerWins);
+    console.log("Ties: " + tieGame);
 
     return;
 
