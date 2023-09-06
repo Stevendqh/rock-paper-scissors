@@ -10,8 +10,13 @@ function getComputerChoice() {
             return "scissors"
         }
     }
+
+function getPlayerChoice() {
+    let playerSelection = prompt("Enter your choice: Rock, Paper, or Scissors");
+    return playerSelection;
+}
 function playRound(playerSelection,computerSelection) {
-    //let playerSelection = prompt("Enter your choice: Rock, Paper, or Scissors");
+
     
     playerSelection = playerSelection.toLowerCase();
 
@@ -38,4 +43,27 @@ function playRound(playerSelection,computerSelection) {
 
 }
 
-console.log(playRound("Scissors",getComputerChoice()));
+function game(){
+    let playerWins = 0;
+    let computerWins  = 0;
+
+    for (let i = 0; i < 5; i++) {
+
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+
+        const roundResult = playRound(playerSelection,computerSelection);
+
+        if (roundResult.includes("Win")) {
+            playerWins++;
+          } else if (roundResult.includes("Lose")) {
+            computerWins++;
+          }
+    }  
+
+    console.log ("Player Wins: " + playerWins);
+    console.log ("Computer Wins: " + computerWins);
+
+    return;
+
+}
