@@ -46,6 +46,7 @@ function playRound(playerSelection,computerSelection) {
 function game(){
     let playerWins = 0;
     let computerWins  = 0;
+    let tieGame = 0
 
     for (let i = 0; i < 5; i++) {
 
@@ -54,16 +55,22 @@ function game(){
 
         const roundResult = playRound(playerSelection,computerSelection);
 
-        if (roundResult.includes("Win")) {
+         if (roundResult.includes("Win")) {
             playerWins++;
-          } else if (roundResult.includes("Lose")) {
+          } else if (roundResult.includes("lose")) {
             computerWins++;
+          } else if (roundResult.includes("tie")) {
+            tieGame++;
           }
+        console.log(roundResult);
     }  
 
     console.log ("Player Wins: " + playerWins);
     console.log ("Computer Wins: " + computerWins);
+    console.log ("Ties: " + tieGame);
 
     return;
 
 }
+
+game();
