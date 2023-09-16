@@ -5,3 +5,10 @@ I want to click it
 I want the program to store rock into a variable called "player selection"
 
 Then I will use that "player selection" to play a game
+
+DONE 
+
+Add a div to display results
+change all of my consol.logs into DOM methods
+Display the running score
+
