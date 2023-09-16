@@ -1,0 +1,7 @@
+I have a button, lets say it is "ROCK"
+
+I want to click it
+
+I want the program to store rock into a variable called "player selection"
+
+Then I will use that "player selection" to play a game

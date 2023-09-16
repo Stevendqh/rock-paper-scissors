@@ -1,3 +1,6 @@
+
+// playerSelection="Wubalubadubdub"
+
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
 
@@ -11,15 +14,18 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    let playerSelection = prompt("Enter your choice: Rock, Paper, or Scissors");
-    return playerSelection;
-}
+// function getPlayerChoice() {
+//     let playerSelection = prompt("Enter your choice: Rock, Paper, or Scissors");
+//     return playerSelection;
+// }
 
 function playRound(playerSelection, computerSelection) {
 
+    // playerSelection = "ROCK";
+    computerSelection = getComputerChoice();
 
-    playerSelection = playerSelection.toLowerCase();
+    // return console.log(playerSelection + "---" + computerSelection);
+
 
     const outcomes = {
         rock: {
@@ -40,47 +46,52 @@ function playRound(playerSelection, computerSelection) {
     console.log("Computer chose: " + computerSelection);
 
     if (!outcomes[playerSelection] || !outcomes[computerSelection]) {
-        return "Invalid selections. Please choose Rock, Paper, Or Scissors."
+        console.log ("Invalid selections. Please choose Rock, Paper, Or Scissors.");
     }
 
     if (playerSelection === computerSelection) {
-        return "It's a tie! You both chose " + playerSelection + ".";
+        console.log ("It's a tie! You both chose " + playerSelection + ".");
     } else if (outcomes[playerSelection].beats === computerSelection) {
-        return "You Win! " + playerSelection + " beats " + computerSelection + ".";
+        console.log ("You Win! " + playerSelection + " beats " + computerSelection + ".");
     } else {
-        return "You lose! " + computerSelection + " beats " + playerSelection + ".";
+        console.log ("You lose! " + computerSelection + " beats " + playerSelection + ".");
     }
-
+    return
 }
 
-function game() {
-    let playerWins = 0;
-    let computerWins = 0;
-    let tieGame = 0
 
-    for (let i = 0; i < 5; i++) {
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        playRound(event.target.id);
+      });
+    });
 
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
 
-        const roundResult = playRound(playerSelection, computerSelection);
+// function game() {
+//     let playerWins = 0;
+//     let computerWins = 0;
+//     let tieGame = 0
 
-        if (roundResult.includes("Win")) {
-            playerWins++;
-        } else if (roundResult.includes("lose")) {
-            computerWins++;
-        } else if (roundResult.includes("tie")) {
-            tieGame++;
-        }
-        console.log(roundResult);
-    }
 
-    console.log("Player Wins: " + playerWins);
-    console.log("Computer Wins: " + computerWins);
-    console.log("Ties: " + tieGame);
+//     const playerSelection = getPlayerChoice();
+//     const computerSelection = getComputerChoice();
 
-    return;
+//     const roundResult = playRound(playerSelection, computerSelection);
 
-}
+//     if (roundResult.includes("Win")) {
+//         playerWins++;
+//     } else if (roundResult.includes("lose")) {
+//         computerWins++;
+//     } else if (roundResult.includes("tie")) {
+//         tieGame++;
+//     }
+//     console.log(roundResult);
 
-game();
+//     console.log("Player Wins: " + playerWins);
+//     console.log("Computer Wins: " + computerWins);
+//     console.log("Ties: " + tieGame);
+
+//     return;
+
+// }
