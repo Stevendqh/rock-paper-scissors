@@ -5,27 +5,45 @@ function getComputerChoice() {
   }
   
   function playRound(playerSelection, computerSelection) {
+
     computerSelection = getComputerChoice();
-  
+
     const outcomes = {
       rock: { beats: "scissors", losesTo: "paper" },
       paper: { beats: "rock", losesTo: "scissors" },
       scissors: { beats: "paper", losesTo: "rock" },
     };
-  
-    console.log("You chose: " + playerSelection);
-    console.log("Computer chose: " + computerSelection);
+
+
+
+    const resultDiv = document.getElementById("resultDiv");
+    resultDiv.textContent = "";
+    const resultText = document.createElement("p");
   
     if (!outcomes[playerSelection] || !outcomes[computerSelection]) {
-      console.log("Invalid selections. Please choose Rock, Paper, or Scissors.");
+      resultText.textContent = "Invalid selections. Please choose Rock, Paper, or Scissors.";
     } else if (playerSelection === computerSelection) {
-      console.log("It's a tie! You both chose " + playerSelection + ".");
+      resultText.textContent = "It's a tie! You both chose " + playerSelection + ".";
     } else if (outcomes[playerSelection].beats === computerSelection) {
-      console.log("You Win! " + playerSelection + " beats " + computerSelection + ".");
+      resultText.textContent = "You Win! " + playerSelection + " beats " + computerSelection + ".";
     } else {
-      console.log("You lose! " + computerSelection + " beats " + playerSelection + ".");
+      resultText.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
     }
-  }
+
+    const playerChoiceText = document.createElement("p");
+    playerChoiceText.textContent = "Your choice: " + playerSelection;
+    resultDiv.append(playerChoiceText);
+
+    const computerChoiceText = document.createElement("p");
+    computerChoiceText.textContent = "Computer's choice: " + computerSelection;
+    resultDiv.append(computerChoiceText);
+
+    resultDiv.append(resultText);
+
+
+}
+
+
   
   function handleButtonClick(event) {
     playRound(event.target.id);
