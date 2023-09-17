@@ -4,6 +4,10 @@ function getComputerChoice() {
     return choices[randomNum];
   }
   
+let playerScore = 0;
+let computerScore = 0;
+
+
   function playRound(playerSelection, computerSelection) {
 
     computerSelection = getComputerChoice();
@@ -14,7 +18,11 @@ function getComputerChoice() {
       scissors: { beats: "paper", losesTo: "rock" },
     };
 
+    const runningScoreDiv = document.getElementById("runningScoreDiv");
+    const runningScoreText = document.createElement("p");
+    runningScoreDiv.textContent = "";
 
+ 
 
     const resultDiv = document.getElementById("resultDiv");
     resultDiv.textContent = "";
@@ -23,12 +31,16 @@ function getComputerChoice() {
     if (!outcomes[playerSelection] || !outcomes[computerSelection]) {
       resultText.textContent = "Invalid selections. Please choose Rock, Paper, or Scissors.";
     } else if (playerSelection === computerSelection) {
-      resultText.textContent = "It's a tie! You both chose " + playerSelection + ".";
+      resultText.textContent = "It's a tie!" ;
     } else if (outcomes[playerSelection].beats === computerSelection) {
+      playerScore +=1
       resultText.textContent = "You Win! " + playerSelection + " beats " + computerSelection + ".";
     } else {
+      computerScore +=1
       resultText.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
     }
+
+    runningScoreText.textContent = "Total Score: Player = " + playerScore + "       " + "Computer: " + computerScore;
 
     const playerChoiceText = document.createElement("p");
     playerChoiceText.textContent = "Your choice: " + playerSelection;
@@ -39,6 +51,11 @@ function getComputerChoice() {
     resultDiv.append(computerChoiceText);
 
     resultDiv.append(resultText);
+
+    runningScoreDiv.append(runningScoreText);
+
+
+ 
 
 
 }
