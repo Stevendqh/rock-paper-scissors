@@ -40,7 +40,7 @@ let computerScore = 0;
       resultText.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
     }
 
-    runningScoreText.textContent = "Total Score: Player = " + playerScore + "       " + "Computer: " + computerScore;
+    runningScoreText.textContent = "Total Score: Player = " + playerScore + " " + "Computer: " + computerScore;
 
     const playerChoiceText = document.createElement("p");
     playerChoiceText.textContent = "Your choice: " + playerSelection;
